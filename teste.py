@@ -1,65 +1,80 @@
 from tkinter import *
+from tkinter import ttk
+import tkinter as tt
+# import tkinter as tt
   
 class Application:
     def __init__(self, master=None):
+        self.valorbarra = 0
         self.fontePadrao = ("Arial", "10")
-        self.primeiroContainer = Frame(master)
-        self.primeiroContainer["pady"] = 10
-        self.primeiroContainer.pack()
+        self.var_barra = tt.DoubleVar()
+
+        # Cria containers
+        self.statusContainer = Frame(master)
+        self.statusContainer["padx"] = 20
+        self.statusContainer.pack()
+
+        self.centerContainer = Frame(master)
+        # self.centerContainer["pady"] = 200
+        self.centerContainer.pack()
   
-        self.segundoContainer = Frame(master)
-        self.segundoContainer["padx"] = 20
-        self.segundoContainer.pack()
+        self.optionsContainer = Frame(master)
+        self.optionsContainer["padx"] = 20
+        self.optionsContainer.pack()
   
-        self.terceiroContainer = Frame(master)
-        self.terceiroContainer["padx"] = 20
-        self.terceiroContainer.pack()
-  
-        self.quartoContainer = Frame(master)
-        self.quartoContainer["pady"] = 20
-        self.quartoContainer.pack()
-  
-        self.titulo = Label(self.primeiroContainer, text="Dados do usuário")
-        self.titulo["font"] = ("Arial", "10", "bold")
+        # Preenche containers
+        imagem = tt.PhotoImage(file="happy.gif")
+        self.titulo = Label(self.centerContainer, image=imagem)
+        self.titulo.imagem = imagem
         self.titulo.pack()
   
-        self.nomeLabel = Label(self.segundoContainer,text="Nome", font=self.fontePadrao)
-        self.nomeLabel.pack(side=LEFT)
+        # Status Bar
+        self.minha_barra = ttk.Progressbar(self.statusContainer, variable=self.var_barra, maximum=100)
+        self.minha_barra.pack(side=LEFT)
   
-        self.nome = Entry(self.segundoContainer)
-        self.nome["width"] = 30
-        self.nome["font"] = self.fontePadrao
-        self.nome.pack(side=LEFT)
-  
-        self.senhaLabel = Label(self.terceiroContainer, text="Senha", font=self.fontePadrao)
-        self.senhaLabel.pack(side=LEFT)
-  
-        self.senha = Entry(self.terceiroContainer)
-        self.senha["width"] = 30
-        self.senha["font"] = self.fontePadrao
-        self.senha["show"] = "*"
-        self.senha.pack(side=LEFT)
-  
-        self.autenticar = Button(self.quartoContainer)
-        self.autenticar["text"] = "Autenticar"
-        self.autenticar["font"] = ("Calibri", "8")
-        self.autenticar["width"] = 12
-        self.autenticar["command"] = self.verificaSenha
-        self.autenticar.pack()
-  
-        self.mensagem = Label(self.quartoContainer, text="", font=self.fontePadrao)
-        self.mensagem.pack()
+        # Actions buttons
+        # Eat
+        self.btnEat = Button(self.optionsContainer)
+        self.btnEat["text"] = "Comer"
+        self.btnEat["font"] = ("Calibri", "8")
+        self.btnEat["width"] = 6
+        self.btnEat["command"] = self.verificaSenha
+        self.btnEat.pack(side=LEFT)
+
+        # Shower
+        self.btnShower = Button(self.optionsContainer)
+        self.btnShower["text"] = "Limpar"
+        self.btnShower["font"] = ("Calibri", "8")
+        self.btnShower["width"] = 6
+        self.btnShower["command"] = self.verificaSenha
+        self.btnShower.pack(side=LEFT)
+
+        # Cure
+        self.btnCure = Button(self.optionsContainer)
+        self.btnCure["text"] = "Curar"
+        self.btnCure["font"] = ("Calibri", "8")
+        self.btnCure["width"] = 6
+        self.btnCure["command"] = self.verificaSenha
+        self.btnCure.pack(side=LEFT)
+
+        # Play
+        self.btnPlay = Button(self.optionsContainer)
+        self.btnPlay["text"] = "Brincar"
+        self.btnPlay["font"] = ("Calibri", "8")
+        self.btnPlay["width"] = 6
+        self.btnPlay["command"] = self.verificaSenha
+        self.btnPlay.pack(side=LEFT)
+
   
     #Método verificar senha
     def verificaSenha(self):
-        usuario = self.nome.get()
-        senha = self.senha.get()
-        if usuario == "usuariodevmedia" and senha == "dev":
-            self.mensagem["text"] = "Autenticado"
-        else:
-            self.mensagem["text"] = "Erro na autenticação"
+        if self.valorbarra < 100 :
+            self.valorbarra = self.valorbarra + 1
+
+        self.var_barra.set(self.valorbarra)
+        root.update()
   
   
-root = Tk()
+root = tt.Tk()
 Application(root)
 root.mainloop()

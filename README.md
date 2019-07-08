@@ -11,6 +11,6 @@ Guarda a GUI do programa.
 Guarda tudo relacionado ao personagem, como estado, ações, etc.
 
 ## O que falta fazer?
-Persistência (um usuário pode ter mais de um tamagotchi)
-Implementar regra de vida do personagem
-Playgame
+- Persistência (um usuário pode ter mais de um tamagotchi)
+- Implementar regra de vida do personagem
+- Playgame

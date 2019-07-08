@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter import ttk
 import tkinter as tt
-# import tkinter as tt
   
 class Application:
     def __init__(self, master=None):
@@ -37,9 +36,9 @@ class Application:
         # print(self.minha_barra.config())
 
         # ********** Main frame **********
-        imagem = tt.PhotoImage(file="happy.gif")
-        self.titulo = Label(self.centerContainer, image=imagem)
-        self.titulo.imagem = imagem
+        mainImage = tt.PhotoImage(file="happy.gif")
+        self.titulo = Label(self.centerContainer, image=mainImage)
+        self.titulo.mainImage = mainImage
         self.titulo.pack()
   
   

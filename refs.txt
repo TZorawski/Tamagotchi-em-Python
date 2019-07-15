@@ -1,0 +1,26 @@
+https://docs.python.org/3.0/library/tkinter.html
+
+
+Imagens:
+https://www.google.com/search?q=potato&tbm=isch&tbs=rimg:CUJ3fUnyq26hIjjoBWsuAghaypS2ex_12k5fdy30DqmeslqM5EAnlQ3ndS9AGfrLCKH36XyiJkgu1flAAwwElNrQvBSoSCegFay4CCFrKEUzbl0L55xBvKhIJlLZ7H_1aTl90RvekrtWsAkpsqEgnLfQOqZ6yWoxFa-gxcOgdOKCoSCTkQCeVDed1LEUfLJv883hCDKhIJ0AZ-ssIoffoR0ltN5vixJIUqEglfKImSC7V-UBFI-qofbiji8SoSCQDDASU2tC8FEVdMNCsyFOJF&tbo=u&sa=X&ved=2ahUKEwiBjM2l0KPjAhWVDbkGHZ9cCU0Q9C96BAgBEBs&biw=1366&bih=657&dpr=1#imgdii=yQaRfwxAb8469M:&imgrc=8fdDf8kIp-jdaM:
+https://www.google.com/search?q=potato&tbm=isch&tbs=rimg:CTkQCeVDed1LIjjoBWsuAghaysM7_1kjB7Q4gr6P8GOznaJxmBq-DOqX-L9AGfrLCKH36d4Zxyp5U9RmbUFpX1j9nvyoSCegFay4CCFrKEUzbl0L55xBvKhIJwzv-SMHtDiARuQIZdiJIHOkqEgmvo_1wY7OdonBGcK5pl_1BeUESoSCWYGr4M6pf4vEVl2smgdUAr6KhIJ0AZ-ssIoffoR0ltN5vixJIUqEgl3hnHKnlT1GRFYlxV4J3AdjSoSCZtQWlfWP2e_1EeJzteoMwyl9&tbo=u&sa=X&ved=2ahUKEwimwtTy0KPjAhVpG7kGHbktC7sQ9C96BAgBEBs&biw=1366&bih=608&dpr=1
+
+
+https://pt.stackoverflow.com/questions/210497/como-fa%C3%A7o-pra-importar-imagem-em-python-com-a-gui-tkinter
+https://pt.stackoverflow.com/questions/321393/progress-bar-tkinter
+
+https://tkdocs.com/tutorial/styles.html
+
+EXEMPLO JOGO:
+https://wiki.python.org.br/AdivinhacaoTkinter
+
+ENUM:
+https://cadernodelaboratorio.com.br/2017/04/27/o-tipo-enum-em-python/
+https://docs.python.org/3/library/enum.html
+
+DOC TK:
+http://www.tcl.tk/man/tcl8.6/TkCmd/contents.htm
+
+OUTRAS DOCS:
+https://cadernodelaboratorio.com.br/softwares/tkinter.pdf
+https://docs.python.org/3.0/library/tkinter.html#setting-options

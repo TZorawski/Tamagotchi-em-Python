@@ -2,8 +2,10 @@ from tkinter import *
 from tkinter import ttk
 import tkinter as tt
   
-class Application:
+class Application(Toplevel):
     def __init__(self, master=None):
+        Toplevel.__init__(self, master=master)
+
         self.valHappyBar = 0
         self.valHealthBar = 0
         self.valHungerBar = 0
@@ -88,9 +90,12 @@ class Application:
         self.varHappyBar.set(self.valHappyBar)
         self.varHealthBar.set(self.valHealthBar)
         self.varHungerBar.set(self.valHungerBar)
-        root.update()
+        # root.update()
   
-  
-root = tt.Tk()
-Application(root)
-root.mainloop()
+# def beginPet ():
+#     Application(root)
+    
+
+# root = tt.Tk()
+# root.mainloop()
+# Application(root)

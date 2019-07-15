@@ -90,12 +90,4 @@ class Application(Toplevel):
         self.varHappyBar.set(self.valHappyBar)
         self.varHealthBar.set(self.valHealthBar)
         self.varHungerBar.set(self.valHungerBar)
-        # root.update()
-  
-# def beginPet ():
-#     Application(root)
-    
 
-# root = tt.Tk()
-# root.mainloop()
-# Application(root)

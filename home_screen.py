@@ -41,20 +41,6 @@ class HomeScreen:
         self.mensagem = Label(self.quartoContainer, text="", font=self.fontePadrao)
         self.mensagem.pack()
 
-    def fecha_jan(self):
-        self.jan.destroy()
-        
-    def new_jan(self):
-        self.jan=Toplevel()
-        self.l=Label(self.jan, text='Feche esta para poder voltar a raiz!')
-        self.l.grid()
-        b=Button(self.jan, text='Fechar', command=self.fecha_jan)
-        b.grid()
-        self.jan.geometry('300x200')
-        self.jan.transient(root)#
-        self.jan.focus_force()#
-        self.jan.grab_set()#
-
     # Entra na conta do usuario
     def login(self):
         usuario = self.nome.get()
@@ -65,13 +51,11 @@ class HomeScreen:
             # self.petWindow.protocol("WM_DELETE_WINDOW", self.app.on_closing)
         else:
             self.petWindow.deiconify()
-        # tamagotchi.beginPet()
   
 
 def main():
-    global app, stopRead, root
+    global app, root
     root = Tk()
-    root.geometry("300x300")
     app = HomeScreen(root)
     root.mainloop()
 

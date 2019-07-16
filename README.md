@@ -5,6 +5,9 @@ Tamagotchi em Python desenvolvido para a disciplina de Linguagem de Programaçã
 Para executar use 'python home_screen.py'.
 
 ## Organização
+### refs.txt
+Contém as referências usadas como consultas. Entre elas estão algumas documentações, exemplos de cógigos, tutorias, entre outros materiais.
+
 ### images/
 Guarda todas as imagens do Pet.
 
@@ -24,6 +27,5 @@ Guarda a GUI do programa ligada ao Pet.
 Guarda tudo relacionado ao personagem, como estado, ações, etc. Seus estados são controlados por um 'enum', o qual guarda todas as possibilidades de estado do pet.
 
 ## O que falta fazer?
-- Persistência (um usuário pode ter mais de um tamagotchi)
 - Implementar regra de vida do personagem
 - Playgame

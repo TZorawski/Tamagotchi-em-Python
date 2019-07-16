@@ -21,6 +21,11 @@ https://docs.python.org/3/library/enum.html
 DOC TK:
 http://www.tcl.tk/man/tcl8.6/TkCmd/contents.htm
 
+MANIPUANDO MÚLTIPLAS JANELAS:
+https://coredump.pt/questions/39959470/open-unique-secondary-window-with-tkinter
+https://www.vivaolinux.com.br/topico/Python/Desenvolvendo-varias-telas-Pycharm-Tkinter
+https://pt.stackoverflow.com/questions/22401/tkinter-focar-uma-janela-ignorando-a-de-tr%C3%A1s
+
 OUTRAS DOCS:
 https://cadernodelaboratorio.com.br/softwares/tkinter.pdf
 https://docs.python.org/3.0/library/tkinter.html#setting-options

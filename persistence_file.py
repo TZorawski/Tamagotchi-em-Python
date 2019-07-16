@@ -1,5 +1,6 @@
 import sys
 
+# Recupera todos os dados do usuário
 def read_file(file_name):
     config = {}
     transition = {}
@@ -15,10 +16,19 @@ def read_file(file_name):
     
     return pets
 
+# Recupera o pet do usuário
+def getPet (ownerName, petName):
+  features = read_file('data/' + ownerName + '.txt')
+  for f in features:
+    if f[0] == petName:
+      return f
+  return []
+
 def teste():
-    pets = read_file("data/marcos.txt")
-    
-    for p in pets:
-      print(p)
+    # pets = read_file("data/marcos.txt")
+    # for p in pets:
+    #   print(p)
+
+    print(getPet('marcos', 'nome1'))
 
 teste()

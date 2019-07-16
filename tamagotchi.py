@@ -1,11 +1,22 @@
 from tkinter import *
 from tkinter import ttk
 import tkinter as tt
+import potato
+import persistence_file
   
 class Application(Toplevel):
-    def __init__(self, master=None):
-        Toplevel.__init__(self, master=master)
+    def __init__(self, ownerName, petName):
+        print(ownerName)
+        print(petName)
+        features = persistence_file.getPet(ownerName, petName)
+        pet = potato.Potato(features[0], features[2], features[3], features[4])
+        print(pet)
 
+        # self.buildWindow(master)
+        
+
+    # Constroi Janela
+    def buildWindow(self, master=None):
         self.valHappyBar = 0
         self.valHealthBar = 0
         self.valHungerBar = 0
@@ -76,9 +87,8 @@ class Application(Toplevel):
         self.btnPlay["width"] = 6
         self.btnPlay["command"] = self.verificaSenha
         self.btnPlay.pack(side=LEFT)
-
   
-    #Método verificar senha
+    # Método verificar senha
     def verificaSenha(self):
         if self.valHappyBar < 100 :
             self.valHappyBar = self.valHappyBar + 1

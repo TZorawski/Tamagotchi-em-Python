@@ -1,11 +1,12 @@
 from enum import Enum
 
-class Application:
-    def __init__(self):
-      self.happy = 100
-      self.health = 100
-      self.hunger = 100
-      self.state = StatePotato.NORMAL
+class Potato:
+    def __init__(self, name, happy=100, health=100, hunger=100):
+      self.name = name
+      self.happy = happy
+      self.health = health
+      self.hunger = hunger
+      # self.state = StatePotato(state)
 
 class StatePotato (Enum):
   SAD = 0

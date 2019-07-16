@@ -1,2 +1,3 @@
-id,name,create_date,last_visit,ratea,rateb,ratec
-id1,nome1,create_date1,taxaa1,taxab1,taxac1
+bomerang,1507201922:12,100,80,56
+jujuba,1507201922:11,50,60,48
+nome1,ultima_visita,taxaa1,taxab1,taxac1

@@ -15,6 +15,10 @@ class HomeScreen:
         self.segundoContainer = Frame(master)
         self.segundoContainer["padx"] = 20
         self.segundoContainer.pack()
+
+        self.terceiroContainer = Frame(master)
+        self.terceiroContainer["padx"] = 20
+        self.terceiroContainer.pack()
   
         self.quartoContainer = Frame(master)
         self.quartoContainer["pady"] = 20
@@ -25,6 +29,7 @@ class HomeScreen:
         self.titulo["font"] = ("Arial", "10", "bold")
         self.titulo.pack()
   
+        # Campos do usuário
         self.nomeLabel = Label(self.segundoContainer,text="Nome", font=self.fontePadrao)
         self.nomeLabel.pack(side=LEFT)
   
@@ -32,7 +37,17 @@ class HomeScreen:
         self.nome["width"] = 30
         self.nome["font"] = self.fontePadrao
         self.nome.pack(side=LEFT)
+
+        # Campos do PET
+        self.petLabel = Label(self.terceiroContainer,text="Pet", font=self.fontePadrao)
+        self.petLabel.pack(side=LEFT)
   
+        self.pet = Entry(self.terceiroContainer)
+        self.pet["width"] = 30
+        self.pet["font"] = self.fontePadrao
+        self.pet.pack(side=LEFT)
+  
+        # Submit
         self.botao = Button(self.quartoContainer)
         self.botao["text"] = "Entrar"
         self.botao["font"] = ("Calibri", "8")
@@ -43,9 +58,13 @@ class HomeScreen:
 
     # Entra na conta do usuario
     def login(self):
-        usuario = self.nome.get()
+        owner = self.nome.get()
+        pet = self.pet.get()
+
+
         self.petWindow = tt.Toplevel(self.parent)
-        self.app = tamagotchi.Application(self.petWindow)
+        appPet = tamagotchi.Application(owner, pet)
+        self.app = appPet.buildWindow(self.petWindow)
         # self.petWindow.protocol("WM_DELETE_WINDOW", self.app.on_closing)
   
 

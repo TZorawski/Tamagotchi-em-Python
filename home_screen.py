@@ -1,6 +1,9 @@
 from tkinter import *
 import tkinter as tt
 import tamagotchi
+import time
+import potato
+import persistence_file
   
 class HomeScreen:
     def __init__(self, parent, master=None):
@@ -48,12 +51,19 @@ class HomeScreen:
         self.pet.pack(side=LEFT)
   
         # Submit
-        self.botao = Button(self.quartoContainer)
-        self.botao["text"] = "Entrar"
-        self.botao["font"] = ("Calibri", "8")
-        self.botao["width"] = 12
-        self.botao["command"] = self.login
-        self.botao.pack()
+        self.btnEntrar = Button(self.quartoContainer)
+        self.btnEntrar["text"] = "Entrar"
+        self.btnEntrar["font"] = ("Calibri", "8")
+        self.btnEntrar["width"] = 12
+        self.btnEntrar["command"] = self.login
+        self.btnEntrar.pack()
+
+        self.btnNovo = Button(self.quartoContainer)
+        self.btnNovo["text"] = "Novo Pet"
+        self.btnNovo["font"] = ("Calibri", "8")
+        self.btnNovo["width"] = 12
+        self.btnNovo["command"] = self.novoPet
+        self.btnNovo.pack()
 
 
     # Entra na conta do usuario
@@ -61,11 +71,20 @@ class HomeScreen:
         owner = self.nome.get()
         pet = self.pet.get()
 
-
         self.petWindow = tt.Toplevel(self.parent)
         appPet = tamagotchi.Application(owner, pet)
         self.app = appPet.buildWindow(self.petWindow)
         # self.petWindow.protocol("WM_DELETE_WINDOW", self.app.on_closing)
+
+    def novoPet (self):
+        owner = self.nome.get()
+        pet = self.pet.get()
+
+        newPet = potato.Potato(pet)
+        rates = newPet.getRates()
+        persistence_file.write_file_new_pet(owner, "" + pet + "," + str(time.ctime()) + "," + str(rates[0]) + "," + str(rates[1]) + "," + str(rates[2]) + "," + str(rates[3]) + "," + str(rates[4]))
+
+        self.login()
   
 
 def main():

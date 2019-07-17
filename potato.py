@@ -16,3 +16,14 @@ class StatePotato (Enum):
   DIRTY = 4
   SLEEPING = 5
   DEAD = 6
+
+  def getImage (self):
+    print(self.name)
+    if self.name == 'SAD':
+      print('Yess')
+
+# def test ():
+#   state1 = StatePotato.SAD
+#   StatePotato.getImage(state1)
+
+# test()

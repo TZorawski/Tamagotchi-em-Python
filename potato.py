@@ -1,4 +1,5 @@
 from enum import Enum
+import time
 
 class Potato:
   # Variáveis estáticas
@@ -14,6 +15,7 @@ class Potato:
   maxEnergy = 100
   goodRate = 80
   fineRate = 50
+  spendRate = 10
 
   def __init__(self, name, time, happy=100, health=100, hunger=100, clean=100, energy=100):
     self.name = name
@@ -32,6 +34,11 @@ class Potato:
     rates = [self.happy, self.health, self.hunger, self.clean, self.energy]
     return rates
 
+  def getState (self):
+    return self.state
+  
+  def getTime (self):
+    return self.time
 
   def toEat (self, growVal):
     self.hunger = self.hunger + growVal
@@ -56,9 +63,6 @@ class Potato:
     if self.clean < self.maxClean:
       self.clean = self.clean + growVal
       self.updateState()
-
-  def getState (self):
-    return self.state
 
   def updateState (self):
     if (self.hunger > self.maxHunger) or (self.health > self.maxHealth):
@@ -88,6 +92,21 @@ class Potato:
       self.state = StatePotato.NORMAL
 
     return self.state
+
+  def timeLife (self, newTime):
+    # period = time.strptime(newTime, '%a %b %d %H:%M:%S %Y') - self.time
+    period = (newTime - self.time).seconds / 60
+    # print(newTime - self.time)
+    if (self.happy > 0) and (self.health > 0) and (self.hunger > 0) and (self.clean > 0) and (self.energy > 0):
+      self.happy = self.happy - (self.spendRate * period)
+      self.health = self.health - (self.spendRate * period)
+      self.hunger = self.hunger - (self.spendRate * period)
+      self.clean = self.clean - (self.spendRate * period)
+      self.energy = self.energy - (self.spendRate * period)
+
+      self.updateState()
+      self.time = newTime
+
     
 
 class StatePotato (Enum):

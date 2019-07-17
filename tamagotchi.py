@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 import tkinter as tt
 import time
+import datetime
 import potato
 import persistence_file
   
@@ -16,14 +17,18 @@ class Application (Toplevel):
         self.petName = 'jujuba'
 
         # Instancia PET
-        self.pet = potato.Potato(features[0], time.strptime(features[1], '%a %b %d %H:%M:%S %Y'), int(features[2]), int(features[3]), int(features[4]), int(features[5]), int(features[6]))
-        self.pet.updateState()
-
-        # Controla taxa de crescimento das barras
-        self.growVal = 20
+        self.pet = potato.Potato(features[0], datetime.datetime.strptime(features[1], '%a %b %d %H:%M:%S %Y'), float(features[2]), float(features[3]), float(features[4]), float(features[5]), float(features[6]))
+        # self.pet = potato.Potato(features[0], time.strptime(features[1], '%a %b %d %H:%M:%S %Y'), int(features[2]), int(features[3]), int(features[4]), int(features[5]), int(features[6]))
 
         # Controla o tempo de vida do PET
         self.time = time.ctime()
+        self.pet.timeLife(datetime.datetime.now()) # Atualiza valores de acordo com o tempo
+
+
+        #self.pet.updateState()
+
+        # Controla taxa de crescimento das barras
+        self.growVal = 10
 
         # self.buildWindow(master)
         
@@ -132,6 +137,7 @@ class Application (Toplevel):
         self.btnPlay.pack(side=LEFT)
 
         self.updateRates()
+        self.life()
 
     def closeWindow (self):
         rates = self.pet.getRates()
@@ -193,3 +199,15 @@ class Application (Toplevel):
         self.mainImage2 = tt.PhotoImage(file=potato.StatePotato.getImage(self.pet.getState()))
         self.imgPet.configure(image=self.mainImage2)
         self.imgPet.image=self.mainImage2
+
+    def life (self):
+        now = datetime.datetime.now()
+        # Se já passou mais de 3 segundos desde a ultima atualização
+        # print(((now - self.pet.getTime()).seconds))
+        if ((now - self.pet.getTime()).seconds) >= 1:
+            self.pet.timeLife(now) # Atualiza valores de acordo com o tempo
+            self.updateRates()
+            # self.master.update()
+        time.sleep(0.5)
+        self.life()
+        

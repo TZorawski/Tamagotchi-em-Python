@@ -2,6 +2,7 @@ from tkinter import *
 import tkinter as tt
 import tamagotchi
 import time
+import datetime
 import potato
 import persistence_file
   
@@ -83,7 +84,7 @@ class HomeScreen:
 
         newPet = potato.Potato(pet)
         rates = newPet.getRates()
-        persistence_file.write_file_new_pet(owner, "" + pet + "," + str(time.ctime()) + "," + str(rates[0]) + "," + str(rates[1]) + "," + str(rates[2]) + "," + str(rates[3]) + "," + str(rates[4]))
+        persistence_file.write_file_new_pet(owner, "" + pet + "," + str(datetime.datetime.now()) + "," + str(rates[0]) + "," + str(rates[1]) + "," + str(rates[2]) + "," + str(rates[3]) + "," + str(rates[4]))
 
         self.login()
   

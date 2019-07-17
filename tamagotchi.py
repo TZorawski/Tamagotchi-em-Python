@@ -7,22 +7,31 @@ import persistence_file
   
 class Application (Toplevel):
     def __init__(self, ownerName, petName):
+        # self.ownerName = ownerName
+        # self.petName = petName
         # Pega dados do PET
-        features = persistence_file.getPet(ownerName, petName)
-        # features = persistence_file.getPet('ana', 'jujuba')
+        # features = persistence_file.getPet(ownerName, petName)
+        features = persistence_file.getPet('ana', 'jujuba')
+        self.ownerName = 'ana'
+        self.petName = 'jujuba'
 
         # Instancia PET
-        self.pet = potato.Potato(features[0], int(features[2]), int(features[3]), int(features[4]), int(features[5]), int(features[6]))
+        self.pet = potato.Potato(features[0], time.strptime(features[1], '%a %b %d %H:%M:%S %Y'), int(features[2]), int(features[3]), int(features[4]), int(features[5]), int(features[6]))
         self.pet.updateState()
 
         # Controla taxa de crescimento das barras
         self.growVal = 20
+
+        # Controla o tempo de vida do PET
+        self.time = time.ctime()
 
         # self.buildWindow(master)
         
 
     # Constroi Janela
     def buildWindow (self, master=None):
+        self.master = master
+        self.master.protocol('WM_DELETE_WINDOW', self.closeWindow)
         self.valHappyBar = 0
         self.valHealthBar = 0
         self.valHungerBar = 0
@@ -33,7 +42,7 @@ class Application (Toplevel):
         self.varHungerBar = tt.DoubleVar()
         self.varCleanBar = tt.DoubleVar()
         self.varEnergyBar = tt.DoubleVar()
-        self.fontePadrao = ("Arial", "10")
+        self.fontePadrao = ("Arial", "8")
 
         # Cria containers
         self.statusContainer = Frame(master)
@@ -48,18 +57,28 @@ class Application (Toplevel):
   
         # ======================== Preenche containers ========================
         # ********** Status Bar **********
+        self.labelHappy = Label(self.statusContainer,text="Happy:", font=self.fontePadrao)
+        self.labelHappy.pack(side=LEFT)
         self.happyBar = ttk.Progressbar(self.statusContainer, variable=self.varHappyBar, maximum=100, length=50)
         self.happyBar.pack(side=LEFT)
 
+        self.labelHealth = Label(self.statusContainer,text="Health:", font=self.fontePadrao)
+        self.labelHealth.pack(side=LEFT)
         self.healthBar = ttk.Progressbar(self.statusContainer, variable=self.varHealthBar, maximum=100, length=50)
         self.healthBar.pack(side=LEFT)
 
+        self.labelHunger = Label(self.statusContainer,text="Hunger:", font=self.fontePadrao)
+        self.labelHunger.pack(side=LEFT)
         self.hungerBar = ttk.Progressbar(self.statusContainer, variable=self.varHungerBar, maximum=100, length=50)
         self.hungerBar.pack(side=LEFT)
 
+        self.labelClean = Label(self.statusContainer,text="Clean:", font=self.fontePadrao)
+        self.labelClean.pack(side=LEFT)
         self.cleanBar = ttk.Progressbar(self.statusContainer, variable=self.varCleanBar, maximum=100, length=50)
         self.cleanBar.pack(side=LEFT)
 
+        self.labelEnergy = Label(self.statusContainer,text="Energy:", font=self.fontePadrao)
+        self.labelEnergy.pack(side=LEFT)
         self.energyBar = ttk.Progressbar(self.statusContainer, variable=self.varEnergyBar, maximum=100, length=50)
         self.energyBar.pack(side=LEFT)
         # print(self.minha_barra.config())
@@ -113,6 +132,11 @@ class Application (Toplevel):
         self.btnPlay.pack(side=LEFT)
 
         self.updateRates()
+
+    def closeWindow (self):
+        rates = self.pet.getRates()
+        persistence_file.write_file(self.ownerName, self.petName, "" + self.petName + "," + str(time.ctime()) + "," + str(rates[0]) + "," + str(rates[1]) + "," + str(rates[2]) + "," + str(rates[3]) + "," + str(rates[4]))
+        self.master.destroy()
   
     # Método verificar senha
     def verificaSenha (self):

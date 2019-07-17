@@ -76,6 +76,7 @@ class HomeScreen:
         self.app = appPet.buildWindow(self.petWindow)
         # self.petWindow.protocol("WM_DELETE_WINDOW", self.app.on_closing)
 
+    # Cadastra novo PET
     def novoPet (self):
         owner = self.nome.get()
         pet = self.pet.get()

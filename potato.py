@@ -15,13 +15,14 @@ class Potato:
   goodRate = 80
   fineRate = 50
 
-  def __init__(self, name, happy=100, health=100, hunger=100, clean=100, energy=100):
+  def __init__(self, name, time, happy=100, health=100, hunger=100, clean=100, energy=100):
     self.name = name
     self.happy = happy
     self.health = health
     self.hunger = hunger
     self.clean = clean
     self.energy = energy
+    self.time = time
     self.state = StatePotato.NORMAL
 
   # def getHunger (self):

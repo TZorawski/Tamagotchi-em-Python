@@ -40,25 +40,21 @@ def getPetPos (ownerName, petName):
   for f in features:
     if f[0] == petName:
       return i
-      i = i + 1
+    i = i + 1
   return -1
 
 # Guarda os dados do usuário
 def write_file(ownerName, petName, features):
-  pos = getPetPos(ownerName, petName)
   path = 'data/' + ownerName + '.txt'
   lines = read_file_only_lines(path)
+  pos = getPetPos(ownerName, petName)
   file = open(path, 'w')
-  # print(lines)
-  # print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
   lines[pos] = features + '\n'
   text = ''
   
   for l in lines:
       text = text + l
-  # print("????????????????????????????????????????????????????????")
-  # print(text)
   
   file.write(text)
   file.close()
